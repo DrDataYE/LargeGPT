@@ -12,7 +12,7 @@ device = 'cuda' if torch.cuda.is_available() else 'cpu'
 # Load the saved model from the binary file
 model = BigramLanguageModel()
 model.load_state_dict(torch.load(
-    'models/python_model.bin', map_location=device))
+    'trained_model.bin', map_location=device))
 model.to(device)
 model.eval()
 
