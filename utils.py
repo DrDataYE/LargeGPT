@@ -21,14 +21,17 @@ def load_saved_dataset(dataset_path):
         dataset: The loaded dataset.
     """
     dataset = load_from_disk(dataset_path)
-    return dataset
+    texts = ""
+    for text in dataset['train']['text']:
+        texts += text+"<end>"
+    return texts
 
 # مسار مجلد البيانات المحفوظة
 saved_dataset_path = "./data"
 
 # تحميل مجموعة البيانات المحفوظة
 loaded_dataset = load_saved_dataset(saved_dataset_path)
-text = loaded_dataset['train']['text'][::]
+text = loaded_dataset
 
 # here are all the unique characters that occur in this text
 chars = sorted(list(set(text)))
