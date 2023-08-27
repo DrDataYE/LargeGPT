@@ -224,6 +224,8 @@ def train():
     # Save the trained model in binary format
     save_model(model)
 
+train()
+
 def chat(user_input: str, max_new_tokens=2000, temperature=0.7):
 
     # Encode the user input to the tensor format expected by the model
