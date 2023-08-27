@@ -1,5 +1,5 @@
 import re
-
+from datasets import load_from_disk
 
 def texts(path='./DataSet/article_2634.txt'):
     try:
@@ -10,8 +10,25 @@ def texts(path='./DataSet/article_2634.txt'):
         print("File is not exists")
     return text
 
+def load_saved_dataset(dataset_path):
+    """
+    Load a saved dataset from the specified path.
+    
+    Args:
+        dataset_path (str): The path to the saved dataset.
+        
+    Returns:
+        dataset: The loaded dataset.
+    """
+    dataset = load_from_disk(dataset_path)
+    return dataset
 
-text = texts()
+# مسار مجلد البيانات المحفوظة
+saved_dataset_path = "./data"
+
+# تحميل مجموعة البيانات المحفوظة
+loaded_dataset = load_saved_dataset(saved_dataset_path)
+text = loaded_dataset['train']['text'][::]
 
 # here are all the unique characters that occur in this text
 chars = sorted(list(set(text)))
