@@ -22,8 +22,9 @@ def load_saved_dataset(dataset_path):
     """
     dataset = load_from_disk(dataset_path)
     texts = ""
-    for text in dataset['train']['text']:
-        texts += text+"<end>"
+    for name in ['train','test','unsupervised']:
+        for text in dataset[name]['text']:
+            texts += text+"<end>"
     return texts
 
 # مسار مجلد البيانات المحفوظة
