@@ -218,18 +218,19 @@ def train():
                     f"step {iter}: train loss {losses['train']:.4f}, val loss {losses['val']:.4f} time:{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
         # sample a batch of data
-        xb, yb = get_batch('train')
+            xb, yb = get_batch('train')
 
-        # evaluate the loss
-        logits, loss = model(xb, yb)
-        optimizer.zero_grad(set_to_none=True)
-        loss.backward()
-        optimizer.step()
-
+            # evaluate the loss
+            logits, loss = model(xb, yb)
+            optimizer.zero_grad(set_to_none=True)
+            loss.backward()
+            optimizer.step()
+    console.print("Done Training!",style="bold")
     # Save the trained model in binary format
     save_model(model)
+    console.print("Done Save the Model",style="bold")
 
-# train()
+train()
 
 def chat(user_input: str, max_new_tokens=2000, temperature=0.7):
 
