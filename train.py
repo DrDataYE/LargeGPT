@@ -225,12 +225,13 @@ def train():
             optimizer.zero_grad(set_to_none=True)
             loss.backward()
             optimizer.step()
+
     console.print("Done Training!",style="bold")
     # Save the trained model in binary format
     save_model(model)
     console.print("Done Save the Model",style="bold")
 
-train()
+# train()
 
 def chat(user_input: str, max_new_tokens=2000, temperature=0.7):
 
