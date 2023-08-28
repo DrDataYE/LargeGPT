@@ -1,6 +1,6 @@
 import torch
 from train import BigramLanguageModel
-from utils import encode, decode
+from utils import encode, decode, text_standardize
 import torch
 
 
@@ -31,7 +31,7 @@ while True:
     if user_input.lower() == "quit":
         break
 
-    generated_text = generate_text(user_input, max_tokens=200, temperature=0.5)
+    generated_text = generate_text(text_standardize(user_input), max_tokens=200, temperature=0.5)
 
     print("Generated text:")
     print(generated_text)
