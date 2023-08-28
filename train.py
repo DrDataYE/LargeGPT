@@ -3,6 +3,11 @@ import torch.nn as nn
 from torch.nn import functional as F
 import datetime
 from utils import encode, decode, vocab_size, text
+
+from rich.console import Console
+
+console = Console()
+
 # hyperparameters
 batch_size = 16  # how many independent sequences will we process in parallel?
 block_size = 32  # what is the maximum context length for predictions?
@@ -197,21 +202,20 @@ model = BigramLanguageModel()
 m = model.to(device)
 def train():
     
-    print("Device :",device)
+    console.print("Device :",device,justify="center")
     
     # print the number of parameters in the model
-    print(sum(p.numel() for p in m.parameters())/1e6, 'M parameters', sep="")
+    console.print(sum(p.numel() for p in m.parameters())/1e6, 'M parameters', sep="", style="bold",justify='center')
 
     # create a PyTorch optimizer
     optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
-
-    for iter in range(max_iters):
-
-        # every once in a while evaluate the loss on train and val sets
-        if iter % eval_interval == 0 or iter == max_iters - 1:
-            losses = estimate_loss()
-            print(
-                f"step {iter}: train loss {losses['train']:.4f}, val loss {losses['val']:.4f} time:{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    with console.status("[bold]Training ...", spinner='aesthetic') as status:
+        for iter in range(max_iters):
+            # every once in a while evaluate the loss on train and val sets
+            if iter % eval_interval == 0 or iter == max_iters - 1:
+                losses = estimate_loss()
+                console.print(
+                    f"step {iter}: train loss {losses['train']:.4f}, val loss {losses['val']:.4f} time:{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
         # sample a batch of data
         xb, yb = get_batch('train')
@@ -225,7 +229,7 @@ def train():
     # Save the trained model in binary format
     save_model(model)
 
-train()
+# train()
 
 def chat(user_input: str, max_new_tokens=2000, temperature=0.7):
 
