@@ -22,6 +22,50 @@ Once the dependencies are installed, you can easily run LargeGPT. Open the `main
 python main.py
 ```
 
+
+
+
+
+## Installation in colab
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/DrDataYE/LargeGPT.git
+   ```
+
+2. Install the required packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Move the files from the LargeGPT directory to the root:
+   ```bash
+   mv -if LargeGPT/* .
+   ```
+
+## Training
+
+To train the LargeGPT model, run the following command:
+```bash
+python train.py
+```
+
+## Usage
+
+To use the trained LargeGPT model, run the following command:
+```bash
+python use.py
+```
+
+## Dataset
+
+To download and set up the IMDb dataset, run the following commands:
+```bash
+pip install datasets
+python dataset.py -n imdb -o ./data/
+```
+
+
 ## Training (Optional)
 
 If you're interested in training your own GPT model, you can follow these steps:
