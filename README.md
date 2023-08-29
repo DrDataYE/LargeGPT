@@ -32,8 +32,8 @@ This repository contains a PyTorch implementation of a Bigram Language Model. Th
 
 1. Clone the repository:
    ```shell
-   git clone https://github.com/your-username/bigram-language-model.git
-   cd bigram-language-model
+   git clone https://github.com/DrDatYE/LargeGPT.git
+   cd LargeGPT
    ```
 
 2. Install the required dependencies:
