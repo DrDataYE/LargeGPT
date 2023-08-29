@@ -2,7 +2,9 @@ import torch
 from train import BigramLanguageModel
 from utils import encode, decode, text_standardize
 import torch
+from rich.console import Console
 
+console = Console()
 
 # Define the BigramLanguageModel class and other necessary components as before
 
@@ -25,13 +27,13 @@ def generate_text(prompt, max_tokens=200, temperature=0.7):
     generated_text = decode(generated_tensor.tolist())
     return generated_text
 
-
+console.print("\n\nWelcome To LargeGPT v1\n\n", style="bold green",justify="center")
 while True:
-    user_input = input(">")
+    user_input = console.input("[bold][green]>")
     if user_input.lower() == "quit":
         break
 
-    generated_text = generate_text(text_standardize(user_input), max_tokens=200, temperature=0.5)
+    generated_text = generate_text(user_input, max_tokens=200, temperature=0.5)
 
-    print("Generated text:")
-    print(generated_text)
+    console.print("Generated text",style="bold",justify="center")
+    console.print(generated_text)
