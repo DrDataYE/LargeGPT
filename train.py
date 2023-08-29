@@ -7,19 +7,52 @@ from utils import encode, decode, vocab_size, text
 from rich.console import Console
 
 console = Console()
+import argparse
 
+# ... (الكود السابق)
+
+parser = argparse.ArgumentParser(description='Hyperparameters Configuration')
+
+# Hyperparameters
+parser.add_argument('--batch_size', type=int, default=16, help='Batch size for training')
+parser.add_argument('--block_size', type=int, default=32, help='Maximum context length for predictions')
+parser.add_argument('--max_iters', type=int, default=1000, help='Maximum number of training iterations')
+parser.add_argument('--eval_interval', type=int, default=100, help='Interval for evaluation')
+parser.add_argument('--learning_rate', type=float, default=1e-3, help='Learning rate')
+parser.add_argument('--device', type=str, default='cuda' if torch.cuda.is_available() else 'cpu', help='Device for training (cuda or cpu)')
+parser.add_argument('--eval_iters', type=int, default=200, help='Number of iterations for evaluation')
+parser.add_argument('--n_embd', type=int, default=512, help='Number of embedding dimensions')
+parser.add_argument('--n_head', type=int, default=8, help='Number of attention heads')
+parser.add_argument('--n_layer', type=int, default=6, help='Number of layers in the model')
+parser.add_argument('--dropout', type=float, default=0.1, help='Dropout rate')
+
+args = parser.parse_args()
+
+# ... (الكود السابق)
+
+batch_size = args.batch_size
+block_size = args.block_size
+max_iters = args.max_iters
+eval_interval = args.eval_interval
+learning_rate = args.learning_rate
+device = args.device
+eval_iters = args.eval_iters
+n_embd = args.n_embd
+n_head = args.n_head
+n_layer = args.n_layer
+dropout = args.dropout
 # hyperparameters
-batch_size = 16  # how many independent sequences will we process in parallel?
-block_size = 32  # what is the maximum context length for predictions?
-max_iters = 1000
-eval_interval = 100
-learning_rate = 1e-3
-device = 'cuda' if torch.cuda.is_available() else 'cpu'  # or tpu
-eval_iters = 200
-n_embd = 512  # زيادة عدد الوحدات لتعزيز القدرة التعبيرية
-n_head = 8   # زيادة عدد الرؤوس لتحسين التعامل مع السياقات المتعددة
-n_layer = 6  # زيادة عدد الطبقات لتعميق النموذج
-dropout = 0.1  # زيادة قليلة في الانخراط (Dropout) لتقليل الزيادة الجدية
+# batch_size = 16  # how many independent sequences will we process in parallel?
+# block_size = 32  # what is the maximum context length for predictions?
+# max_iters = 1000
+# eval_interval = 100
+# learning_rate = 1e-3
+# device = 'cuda' if torch.cuda.is_available() else 'cpu'  # or tpu
+# eval_iters = 200
+# n_embd = 512  # زيادة عدد الوحدات لتعزيز القدرة التعبيرية
+# n_head = 8   # زيادة عدد الرؤوس لتحسين التعامل مع السياقات المتعددة
+# n_layer = 6  # زيادة عدد الطبقات لتعميق النموذج
+# dropout = 0.1  # زيادة قليلة في الانخراط (Dropout) لتقليل الزيادة الجدية
 # ------------
 
 torch.manual_seed(1337)
