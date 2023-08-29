@@ -2,6 +2,16 @@
 
 Welcome to the LargeGPT project! This project is an AI-powered chatbot built from scratch by DrDataYE, without utilizing any external API services.
 
+
+## ScreenShots
+
+Training The Model
+![Train](screenshot_2.png)
+
+Use The Model LLM
+![use](screenshot_1.png)
+
+
 ## Installation
 
 To use LargeGPT on your system, follow these steps:
