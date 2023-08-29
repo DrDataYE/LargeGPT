@@ -3,9 +3,18 @@ from train import BigramLanguageModel
 from utils import encode, decode, text_standardize
 import torch
 from rich.console import Console
+import argparse
 
 console = Console()
 
+# Create an argument parser
+parser = argparse.ArgumentParser(description='Generate Text using the Bigram Language Model')
+
+# Add an argument for the input text
+parser.add_argument('--input', type=str, required=True, help='Input text for text generation')
+
+# Parse the command line arguments
+args = parser.parse_args()
 # Define the BigramLanguageModel class and other necessary components as before
 
 # Set hyperparameters
@@ -26,7 +35,6 @@ def generate_text(prompt, max_tokens=200, temperature=0.7):
         encoded_prompt, max_new_tokens=max_tokens, temperature=temperature)[0]
     generated_text = decode(generated_tensor.tolist())
     return generated_text
-
 console.print("\n\nWelcome To LargeGPT v1\n\n", style="bold green",justify="center")
 while True:
     user_input = console.input("[bold][green]>")
