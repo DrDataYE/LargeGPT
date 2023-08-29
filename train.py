@@ -250,11 +250,3 @@ def chat(user_input: str, max_new_tokens=2000, temperature=0.7):
 
     return generated_text
 
-# # start Chatgpt
-# while True:
-#     user_input = input(">")
-#     if user_input.lower() == "quit":
-#         break
-#     print("Generated text:")
-#     print(chat(user_input))
-    
