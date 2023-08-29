@@ -11,7 +11,7 @@ console = Console()
 parser = argparse.ArgumentParser(description='Generate Text using the Bigram Language Model')
 
 # Add an argument for the input text
-parser.add_argument('--input', type=str, required=True, help='Input text for text generation')
+parser.add_argument('--input', type=str, help='Input text for text generation')
 
 # Parse the command line arguments
 args = parser.parse_args()
