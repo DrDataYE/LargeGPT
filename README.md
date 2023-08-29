@@ -24,16 +24,66 @@ To use LargeGPT on your system, follow these steps:
 pip install -r requirements.txt
 ```
 
+بالطبع، إليك مثال على كيفية كتابة ملف `README.md` باستخدام المعلومات التي قدمتها مع إضافة مثال لطريقة استخدام البرنامج:
+
+```markdown
+# Bigram Language Model
+
+This repository contains a PyTorch implementation of a Bigram Language Model. The model is based on the Transformer architecture and is designed for text generation tasks. It uses self-attention mechanisms to capture contextual information and generate coherent and contextually relevant text.
+
+## Installation
+
+1. Clone the repository:
+   ```shell
+   git clone https://github.com/your-username/bigram-language-model.git
+   cd bigram-language-model
+   ```
+
+2. Install the required dependencies:
+   ```shell
+   pip install -r requirements.txt
+   ```
+
 ## Usage
 
-Once the dependencies are installed, you can easily run LargeGPT. Open the `main.py` file and execute the main script. The chatbot will respond to the text you input via the command-line interface.
+You can train the Bigram Language Model and use it for text generation using the following steps:
 
-```bash
-python main.py
+### Training
+
+To train the model with custom hyperparameters, you can run the following command:
+
+```shell
+python train.py --batch_size 32 --block_size 64 --max_iters 2000 --learning_rate 0.001
 ```
 
+Adjust the hyperparameters as needed. The training progress and evaluation results will be displayed in the console.
 
+### Text Generation
 
+After training the model, you can use it for text generation. To generate text based on a user input, run the following command:
+
+```shell
+python generate.py --input "Once upon a time in"
+```
+
+Replace the input text with your own text. The generated text will be displayed in the console.
+
+## Hyperparameters
+
+You can customize the model's behavior using various hyperparameters. Here are some of the available hyperparameters that you can configure:
+
+- `--batch_size`: Batch size for training.
+- `--block_size`: Maximum context length for predictions.
+- `--max_iters`: Maximum number of training iterations.
+- `--learning_rate`: Learning rate for optimization.
+- `--device`: Device for training (cuda or cpu).
+- `--eval_iters`: Number of iterations for evaluation.
+- `--n_embd`: Number of embedding dimensions.
+- `--n_head`: Number of attention heads.
+- `--n_layer`: Number of layers in the model.
+- `--dropout`: Dropout rate.
+
+Feel free to experiment with different hyperparameters to achieve the best results for your specific text generation task.
 
 
 ## Installation in colab
