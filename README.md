@@ -24,10 +24,7 @@ To use LargeGPT on your system, follow these steps:
 pip install -r requirements.txt
 ```
 
-بالطبع، إليك مثال على كيفية كتابة ملف `README.md` باستخدام المعلومات التي قدمتها مع إضافة مثال لطريقة استخدام البرنامج:
-
-```markdown
-# Bigram Language Model
+# LargeGPT Language Model
 
 This repository contains a PyTorch implementation of a Bigram Language Model. The model is based on the Transformer architecture and is designed for text generation tasks. It uses self-attention mechanisms to capture contextual information and generate coherent and contextually relevant text.
 
